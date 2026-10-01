@@ -9,8 +9,8 @@ import {
   Headphones,
 } from 'lucide-react';
 import { WHY_CHOOSE_US } from '@/lib/constants';
-import { SectionHeader } from '@/components/ui/SectionHeader';
 import { useInView } from '@/hooks/useInView';
+
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
   Clock,
@@ -79,8 +79,9 @@ export function WhyChooseUs() {
                 { year: '2015', title: '500+ Installations', desc: 'Milestone of 500 successful elevator installations' },
                 { year: '2020', title: 'National Expansion', desc: 'Expanded operations across 15+ states in India' },
                 { year: '2024', title: '1200+ Projects', desc: 'Continuing to lead with innovation and excellence' },
-              ].map((item, i) => (
+              ].map((item) => (
                 <div key={item.year} className="relative pl-16 pb-10 last:pb-0">
+
                   {/* Dot */}
                   <div className="absolute left-4 top-1 w-5 h-5 rounded-full bg-accent border-4 border-[var(--section-alt)]" />
                   <div className="text-sm font-bold text-accent mb-1">{item.year}</div>

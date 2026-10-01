@@ -7,6 +7,46 @@ export interface NavLink {
   icon?: string;
 }
 
+// ─── Brand & Specs ──────────────────────────────────────────
+export type GalleryCategory = 'All' | 'Residential' | 'Commercial' | 'Capsule' | 'Interiors';
+
+export interface GalleryProject {
+  id: string;
+  title: string;
+  category: 'Residential' | 'Commercial' | 'Capsule' | 'Interiors';
+  location: string;
+  specs: string;
+  stops: string;
+  speed: string;
+  capacity: string;
+  image: string;
+  description: string;
+}
+
+export interface ServiceSpec {
+  label: string;
+  value: string;
+}
+
+export interface ElevatorService {
+  id: string;
+  title: string;
+  tagline: string;
+  description: string;
+  icon: string;
+  image: string;
+  specs: ServiceSpec[];
+  keyFeatures: string[];
+}
+
+export interface LeadFormData {
+  fullName: string;
+  phoneNumber: string;
+  projectType: 'Residential' | 'Commercial' | 'Industrial' | 'AMC';
+  totalFloors: string;
+  message: string;
+}
+
 // ─── Products ───────────────────────────────────────────────
 export interface Product {
   slug: string;
@@ -64,44 +104,11 @@ export interface Testimonial {
   image?: string;
 }
 
-// ─── Blog ───────────────────────────────────────────────────
-export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  coverImage: string;
-  author: Author;
-  category: string;
-  tags: string[];
-  publishedAt: string;
-  readingTime: number;
-}
-
-export interface Author {
-  name: string;
-  avatar: string;
-  bio: string;
-}
-
 // ─── FAQ ────────────────────────────────────────────────────
 export interface FAQItem {
   question: string;
   answer: string;
   category?: string;
-}
-
-// ─── Career ─────────────────────────────────────────────────
-export interface JobOpening {
-  slug: string;
-  title: string;
-  department: string;
-  location: string;
-  type: 'full-time' | 'part-time' | 'contract' | 'internship';
-  description: string;
-  requirements: string[];
-  responsibilities: string[];
-  postedAt: string;
 }
 
 // ─── Contact Form ───────────────────────────────────────────
@@ -126,13 +133,6 @@ export interface QuoteFormData {
   message?: string;
 }
 
-// ─── Industry ───────────────────────────────────────────────
-export interface Industry {
-  name: string;
-  icon: string;
-  description: string;
-}
-
 // ─── Stats ──────────────────────────────────────────────────
 export interface Stat {
   value: number;
@@ -148,15 +148,10 @@ export interface TimelineStep {
   icon: string;
 }
 
-// ─── Client ─────────────────────────────────────────────────
-export interface Client {
-  name: string;
-  logo: string;
-}
-
 // ─── Trust Item ─────────────────────────────────────────────
 export interface TrustItem {
   icon: string;
   title: string;
   description?: string;
 }
+

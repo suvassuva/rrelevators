@@ -1,9 +1,6 @@
-'use client';
-
-import { NAV_LINKS } from '@/lib/constants';
 import Link from 'next/link';
-import { ChevronDown } from 'lucide-react';
 import type { NavLink } from '@/types';
+
 
 interface MegaMenuProps {
   item: NavLink;

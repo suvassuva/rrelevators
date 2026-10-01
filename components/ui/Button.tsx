@@ -19,25 +19,25 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-300 cursor-pointer select-none relative overflow-hidden group';
+    'inline-flex items-center justify-center gap-1.5 font-bold tracking-wider uppercase rounded-lg transition-all duration-300 cursor-pointer select-none relative overflow-hidden group';
 
   const variants = {
     primary:
-      'bg-accent text-primary hover:bg-accent-hover shadow-lg hover:shadow-xl hover:shadow-accent/20 active:scale-[0.98]',
+      'bg-[#0082C8] text-white hover:bg-[#006EA9] shadow-md hover:shadow-[0_2px_15px_rgba(0,130,200,0.35)] active:scale-[0.98]',
     secondary:
-      'bg-primary text-white hover:bg-secondary shadow-lg active:scale-[0.98]',
+      'bg-[#131E35] border border-[#1E2E4E] text-white hover:bg-[#1A2644] hover:border-[#0082C8] shadow-sm active:scale-[0.98]',
     outline:
-      'border-2 border-accent text-accent hover:bg-accent hover:text-primary active:scale-[0.98]',
+      'border border-[#0082C8] text-[#0082C8] hover:bg-[#0082C8] hover:text-white active:scale-[0.98]',
     ghost:
-      'text-accent hover:bg-accent/10 active:scale-[0.98]',
+      'text-[#0082C8] hover:bg-[#0082C8]/10 active:scale-[0.98]',
     accent:
-      'bg-gradient-to-r from-accent to-accent-hover text-primary shadow-lg hover:shadow-xl hover:shadow-accent/30 active:scale-[0.98]',
+      'bg-gradient-to-r from-[#0082C8] to-[#1A4B75] text-white shadow-md hover:shadow-[0_2px_15px_rgba(0,130,200,0.35)] active:scale-[0.98]',
   };
 
   const sizes = {
-    sm: 'px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm',
-    md: 'px-4 py-2.5 text-xs sm:px-5 sm:py-3 sm:text-sm md:text-base',
-    lg: 'px-5 py-3 text-sm sm:px-7 sm:py-3.5 sm:text-base md:text-lg',
+    sm: 'px-3 py-1.5 text-xs',
+    md: 'px-4 py-2 sm:py-2.5 text-xs sm:text-sm',
+    lg: 'px-5 py-2.5 sm:py-3 text-xs sm:text-sm',
   };
 
   const classes = cn(baseStyles, variants[variant], sizes[size], className);

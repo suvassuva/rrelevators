@@ -1,34 +1,53 @@
 import { Hero } from '@/components/home/Hero';
-import { TrustBar } from '@/components/home/TrustBar';
-import { AboutPreview } from '@/components/home/AboutPreview';
-import { ServicesGrid } from '@/components/home/ServicesGrid';
-import { ProductsShowcase } from '@/components/home/ProductsShowcase';
-import { WhyChooseUs } from '@/components/home/WhyChooseUs';
-import { CounterSection } from '@/components/home/CounterSection';
-import { FeaturedProjects } from '@/components/home/FeaturedProjects';
-import { Industries } from '@/components/home/Industries';
-import { InstallationProcess } from '@/components/home/InstallationProcess';
-import { Testimonials } from '@/components/home/Testimonials';
-import { ClientLogos } from '@/components/home/ClientLogos';
+import { About } from '@/components/home/About';
+import { Services } from '@/components/home/Services';
+import { Gallery } from '@/components/home/Gallery';
 import { FAQ } from '@/components/home/FAQ';
-import { CTABanner } from '@/components/home/CTABanner';
-import { HOME_FAQ, SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
+import { ContactForm } from '@/components/home/ContactForm';
+import {
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  SITE_URL,
+  CONTACT,
+  HOME_FAQ,
+} from '@/lib/constants';
 
-// Structured Data for SEO
+// SEO Structured Data (JSON-LD)
 function JsonLd() {
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'LocalBusiness',
     name: SITE_NAME,
     url: SITE_URL,
     description: SITE_DESCRIPTION,
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+91-98765-43210',
-      contactType: 'sales',
-      areaServed: 'IN',
-      availableLanguage: ['English', 'Hindi'],
+    telephone: CONTACT.phoneRaw,
+    email: CONTACT.email,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress:
+        'No 53 & 53, 1st Floor, SS Towers, Sai Baba Temple Rd, Green Garden Layout, Munnekolala',
+      addressLocality: 'Bengaluru',
+      addressRegion: 'KA',
+      postalCode: '560037',
+      addressCountry: 'IN',
     },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ],
+        opens: '08:30',
+        closes: '19:00',
+      },
+    ],
+    areaServed: 'IN',
+    priceRange: '₹₹₹₹',
   };
 
   const faqSchema = {
@@ -62,20 +81,23 @@ export default function HomePage() {
   return (
     <>
       <JsonLd />
+      {/* 1. Hero Section (#home) */}
       <Hero />
-      <TrustBar />
-      <AboutPreview />
-      <ServicesGrid />
-      <ProductsShowcase />
-      <WhyChooseUs />
-      <CounterSection />
-      <FeaturedProjects />
-      <Industries />
-      <InstallationProcess />
-      <Testimonials />
-      <ClientLogos />
+
+      {/* 2. About Section (#about) */}
+      <About />
+
+      {/* 3. Services Grid (#services) */}
+      <Services />
+
+      {/* 4. Filterable Gallery (#gallery) */}
+      <Gallery />
+
+      {/* 5. Frequently Asked Questions */}
       <FAQ />
-      <CTABanner />
+
+      {/* 6. Contact & Lead Form (#contact) */}
+      <ContactForm />
     </>
   );
 }
