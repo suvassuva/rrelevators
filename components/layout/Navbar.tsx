@@ -80,31 +80,31 @@ export function Navbar() {
             : 'bg-[#0F172A]/85 backdrop-blur-sm border-b border-white/5 py-2.5 sm:py-3'
         }`}
       >
-        <div className="w-full px-3.5 sm:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between h-12 sm:h-13 gap-2">
-            {/* Logo Area: RR ELEVATORS branding - Mobile Responsive & Never Overflows */}
+        <div className="w-full px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="flex items-center justify-between h-13 sm:h-14">
+            {/* Logo Area: RR ELEVATORS branding - Clean, Balanced & Proportional */}
             <a
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
-              className="flex items-center gap-2 sm:gap-3 group focus:outline-none shrink-0"
+              className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
               aria-label="RR Elevators Home"
             >
-              <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-lg sm:rounded-xl bg-white p-1 flex items-center justify-center shadow-[0_0_12px_rgba(0,130,200,0.35)] group-hover:scale-105 transition-all shrink-0 overflow-hidden">
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-white p-0.5 flex items-center justify-center border border-white/20 shadow-sm group-hover:scale-105 transition-transform shrink-0 overflow-hidden">
                 <Image
                   src="/images/logo.png"
                   alt="RR Elevators Logo"
-                  width={44}
-                  height={44}
+                  width={40}
+                  height={40}
                   className="w-full h-full object-contain"
                   priority
                 />
               </div>
 
-              <div className="flex items-center gap-1 sm:gap-1.5 leading-none shrink-0">
-                <span className="text-base sm:text-xl font-black tracking-tight text-white font-[family-name:var(--font-heading)]">
+              <div className="flex items-center gap-1.5 leading-none shrink-0">
+                <span className="text-base sm:text-lg font-black tracking-tight text-white font-[family-name:var(--font-heading)]">
                   RR
                 </span>
-                <span className="text-base sm:text-xl font-bold tracking-wider text-[#0082C8] font-[family-name:var(--font-heading)]">
+                <span className="text-base sm:text-lg font-bold tracking-wider text-[#0082C8] font-[family-name:var(--font-heading)]">
                   ELEVATORS
                 </span>
               </div>
@@ -133,7 +133,7 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Right Action Items: Instagram, Helpline Badge & CTA */}
+            {/* Desktop Right Action Items: Instagram, Helpline Badge & CTA */}
             <div className="hidden lg:flex items-center gap-2 shrink-0">
               {/* Instagram Profile Quick Link */}
               <a
@@ -178,38 +178,38 @@ export function Navbar() {
               </a>
             </div>
 
-            {/* Mobile / Tablet Menu Buttons - Always Visible, Never Pushed Off-Screen */}
-            <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden shrink-0">
-              {/* Quick Helpline Dialer */}
+            {/* Mobile / Tablet Menu Buttons - Unified, Matching Design System */}
+            <div className="flex items-center gap-2 lg:hidden shrink-0">
+              {/* Quick Helpline Call Button */}
               <a
                 href={`tel:${CONTACT.phoneRaw}`}
-                className="w-8.5 h-8.5 rounded-lg bg-[#1A4B75]/30 text-[#0082C8] border border-[#0082C8]/30 flex items-center justify-center hover:bg-[#1A4B75]/50 transition-colors shrink-0"
+                className="w-9 h-9 rounded-lg bg-[#131E35] border border-[#1E2E4E] hover:border-[#0082C8] text-[#38BDF8] hover:text-white flex items-center justify-center transition-colors active:scale-95 shadow-sm shrink-0"
                 aria-label="Call Helpline"
                 title={`Call ${CONTACT.phone}`}
               >
                 <Phone size={15} />
               </a>
 
-              {/* Instagram link on tablet / larger screens */}
+              {/* Instagram link on tablet view */}
               <a
                 href={SOCIAL_LINKS.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hidden sm:flex w-8.5 h-8.5 rounded-lg bg-[#131E35] text-gray-300 hover:text-[#E1306C] border border-[#1E2E4E] items-center justify-center transition-colors shrink-0"
+                className="hidden sm:flex w-9 h-9 rounded-lg bg-[#131E35] border border-[#1E2E4E] hover:border-[#E1306C] text-gray-300 hover:text-[#E1306C] items-center justify-center transition-colors shrink-0"
                 aria-label="Instagram Profile"
               >
-                <InstagramIcon size={14} />
+                <InstagramIcon size={15} />
               </a>
 
-              {/* Hamburger Menu Toggle Button - High-Visibility Cyan Badge */}
+              {/* Hamburger Menu Toggle Button - Matching Sleek Dark Glass Button */}
               <button
                 type="button"
                 onClick={() => setMobileOpen(true)}
-                className="w-9 h-9 rounded-lg bg-[#0082C8] text-white hover:bg-[#006EA9] flex items-center justify-center shadow-[0_0_12px_rgba(0,130,200,0.4)] active:scale-95 transition-all cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#38BDF8] shrink-0"
+                className="w-9 h-9 rounded-lg bg-[#131E35] border border-[#1E2E4E] hover:border-[#0082C8] text-white hover:text-[#0082C8] flex items-center justify-center transition-colors active:scale-95 shadow-sm cursor-pointer shrink-0 focus:outline-none focus:ring-1 focus:ring-[#0082C8]"
                 aria-label="Open Navigation Menu"
                 aria-expanded={mobileOpen}
               >
-                <Menu size={20} strokeWidth={2.4} />
+                <Menu size={18} strokeWidth={2.2} />
               </button>
             </div>
           </div>
