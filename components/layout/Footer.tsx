@@ -7,22 +7,10 @@ import {
   MapPin,
   Clock,
   ArrowUp,
-  ShieldCheck,
-  Award,
-  CheckCircle,
-  FileCheck,
 } from 'lucide-react';
 import { CONTACT, SOCIAL_LINKS, SITE_NAME } from '@/lib/constants';
 
 // Social SVGs
-function FacebookIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-    </svg>
-  );
-}
-
 function InstagramIcon() {
   return (
     <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
@@ -90,61 +78,6 @@ export function Footer() {
 
   return (
     <footer className="bg-[#0A101D] text-white border-t border-[#1E2E4E] relative">
-      {/* Safety Compliance Badges Bar (ISO / BIS Certified) */}
-      <div className="border-b border-[#1E2E4E] bg-[#0F172A]/70 py-4">
-        <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#0082C8]/15 border border-[#0082C8]/30 flex items-center justify-center text-[#0082C8] shrink-0">
-                <ShieldCheck size={16} />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-white font-[family-name:var(--font-heading)]">
-                  ISO 9001:2015
-                </div>
-                <div className="text-[10px] text-gray-400">Quality Certified</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#0082C8]/15 border border-[#0082C8]/30 flex items-center justify-center text-[#0082C8] shrink-0">
-                <Award size={16} />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-white font-[family-name:var(--font-heading)]">
-                  BIS IS 14665
-                </div>
-                <div className="text-[10px] text-gray-400">Indian Standards Code</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#0082C8]/15 border border-[#0082C8]/30 flex items-center justify-center text-[#0082C8] shrink-0">
-                <CheckCircle size={16} />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-white font-[family-name:var(--font-heading)]">
-                  CE Conformity
-                </div>
-                <div className="text-[10px] text-gray-400">EN 81-20/50 Directives</div>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-lg bg-[#0082C8]/15 border border-[#0082C8]/30 flex items-center justify-center text-[#0082C8] shrink-0">
-                <FileCheck size={16} />
-              </div>
-              <div>
-                <div className="text-xs font-bold text-white font-[family-name:var(--font-heading)]">
-                  100% ARD Standard
-                </div>
-                <div className="text-[10px] text-gray-400">Automatic Rescue Device</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Content */}
       <div className="container-custom py-10 sm:py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-7 sm:gap-8">
@@ -181,7 +114,6 @@ export function Footer() {
                 { name: 'LinkedIn', icon: <LinkedinIcon />, url: SOCIAL_LINKS.linkedin },
                 { name: 'X', icon: <XIcon />, url: SOCIAL_LINKS.twitter },
                 { name: 'Instagram', icon: <InstagramIcon />, url: SOCIAL_LINKS.instagram },
-                { name: 'Facebook', icon: <FacebookIcon />, url: SOCIAL_LINKS.facebook },
                 { name: 'YouTube', icon: <YoutubeIcon />, url: SOCIAL_LINKS.youtube },
               ].map((s) => (
                 <a
@@ -286,7 +218,6 @@ export function Footer() {
           <p>© {currentYear} {SITE_NAME}. All Rights Reserved. Engineered for Vertical Mobility.</p>
 
           <div className="flex items-center gap-5">
-            <span className="text-gray-500">IS 14665 Compliant</span>
             <button
               type="button"
               onClick={scrollToTop}

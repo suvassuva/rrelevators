@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import {
   ShieldCheck,
@@ -10,6 +11,10 @@ import {
   Settings2,
   Lock,
   ExternalLink,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX,
 } from 'lucide-react';
 import { InstagramIcon } from '@/components/ui/Icons';
 import { useInView } from '@/hooks/useInView';
@@ -23,6 +28,27 @@ const featureIcons = {
 
 export function About() {
   const { ref } = useInView({ threshold: 0.15 });
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
 
   return (
     <section id="about" ref={ref} className="py-14 sm:py-20 bg-[#F8FAFC] text-[#0F172A] relative overflow-hidden">
@@ -54,51 +80,62 @@ export function About() {
 
         {/* Core Engineering Benchmarks - Clean, Simple, High-Impact Equal 2-Column Showcase */}
         <div className="mb-10 sm:mb-14 rounded-2xl bg-white border border-gray-200/80 shadow-sm p-5 sm:p-7 lg:p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-10 items-center">
-            {/* Left Column: Authentic Bengaluru Engineering Hub Photo Card (Equal 50% Width) */}
-            <div>
-              <div className="relative aspect-[4/3] rounded-xl overflow-hidden border border-gray-200/90 shadow-md bg-gray-900 group">
-                <Image
-                  src="/images/unnamed (8).webp"
-                  alt="RR Elevators Customer Experience Center & Engineering Hub, SS Towers, Bengaluru"
-                  fill
-                  unoptimized
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/90 via-black/20 to-transparent" />
-                <div className="absolute top-3 left-3">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0F172A]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono font-bold text-white">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#0082C8] animate-pulse" />
-                    Bengaluru Engineering Hub
-                  </span>
-                </div>
-                <div className="absolute bottom-3 left-3 right-3 text-white">
-                  <div className="text-xs font-bold leading-tight drop-shadow">SS Towers, Munnekolala</div>
-                  <div className="text-[10px] text-gray-300 font-mono mt-0.5">IS 14665 &amp; BIS Certified Facility</div>
-                </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 xl:gap-10 items-stretch">
+            {/* Left Column: Direct Video Showcase (Equal 50% Width & Full Height) */}
+            <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[420px] rounded-xl sm:rounded-2xl overflow-hidden border border-gray-200/90 shadow-md bg-gray-950 group">
+              <video
+                ref={videoRef}
+                src="/videos/rrelevator.mp4"
+                autoPlay
+                muted={isMuted}
+                loop
+                playsInline
+                className="w-full h-full object-cover object-center"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+              />
+
+              {/* Video Action Controls (Bottom-Right) */}
+              <div className="absolute bottom-3 right-3 z-20 flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={togglePlay}
+                  aria-label={isPlaying ? 'Pause Video' : 'Play Video'}
+                  className="w-8 h-8 rounded-full bg-white/90 hover:bg-white text-[#0F172A] flex items-center justify-center shadow-md transition-all hover:scale-105 cursor-pointer backdrop-blur-sm"
+                >
+                  {isPlaying ? <Pause size={14} /> : <Play size={14} className="ml-0.5" />}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={toggleMute}
+                  aria-label={isMuted ? 'Unmute Video' : 'Mute Video'}
+                  className="w-8 h-8 rounded-full bg-black/60 hover:bg-black/80 text-white border border-white/20 flex items-center justify-center backdrop-blur-md shadow-md transition-all hover:scale-105 cursor-pointer"
+                >
+                  {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                </button>
               </div>
             </div>
 
-            {/* Right Column: 3 Core Engineering Pillars & Clean Key Stats (Equal 50% Width) */}
-            <div className="space-y-4">
+            {/* Right Column: 3 Core Engineering Pillars (Equal 50% Width & Full Height) */}
+            <div className="flex flex-col justify-between h-full space-y-4">
               <div>
                 <span className="text-[10px] uppercase font-bold tracking-wider text-[#0082C8] block mb-1">
                   Core Engineering Benchmarks
                 </span>
-                <h3 className="text-lg sm:text-xl font-black text-[#0F172A] font-[family-name:var(--font-heading)] leading-snug">
+                <h3 className="text-xl sm:text-2xl font-black text-[#0F172A] font-[family-name:var(--font-heading)] leading-snug">
                   Precision Engineering Built for Zero Downtime
                 </h3>
-                <p className="text-xs text-gray-600 mt-1 leading-relaxed">
+                <p className="text-xs text-gray-600 mt-1.5 leading-relaxed">
                   Every elevator manufactured at our Bengaluru facility undergoes rigorous component stress testing and optical jig calibration to guarantee passenger safety and whisper-quiet performance.
                 </p>
               </div>
 
               {/* 3 Pillars List - Clear, Simple, All Visible At A Glance */}
-              <div className="space-y-2.5">
-                <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-50/80 border border-gray-100">
-                  <div className="w-7 h-7 rounded-md bg-[#0082C8]/10 text-[#0082C8] flex items-center justify-center shrink-0 mt-0.5">
-                    <Lock size={14} />
+              <div className="space-y-3 my-auto py-1">
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50/90 border border-gray-100 hover:border-[#0082C8]/30 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#0082C8]/10 text-[#0082C8] flex items-center justify-center shrink-0 mt-0.5">
+                    <Lock size={15} />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#0F172A]">Automatic Rescue Device (ARD)</h4>
@@ -108,9 +145,9 @@ export function About() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-50/80 border border-gray-100">
-                  <div className="w-7 h-7 rounded-md bg-[#0082C8]/10 text-[#0082C8] flex items-center justify-center shrink-0 mt-0.5">
-                    <Zap size={14} />
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50/90 border border-gray-100 hover:border-[#0082C8]/30 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#0082C8]/10 text-[#0082C8] flex items-center justify-center shrink-0 mt-0.5">
+                    <Zap size={15} />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#0F172A]">Gearless PMSM Efficiency</h4>
@@ -120,9 +157,9 @@ export function About() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-50/80 border border-gray-100">
-                  <div className="w-7 h-7 rounded-md bg-[#0082C8]/10 text-[#0082C8] flex items-center justify-center shrink-0 mt-0.5">
-                    <Cpu size={14} />
+                <div className="flex items-start gap-3 p-3.5 rounded-xl bg-gray-50/90 border border-gray-100 hover:border-[#0082C8]/30 transition-colors">
+                  <div className="w-8 h-8 rounded-lg bg-[#0082C8]/10 text-[#0082C8] flex items-center justify-center shrink-0 mt-0.5">
+                    <Cpu size={15} />
                   </div>
                   <div>
                     <h4 className="text-xs sm:text-sm font-bold text-[#0F172A]">Precision Steel Chassis</h4>
@@ -130,22 +167,6 @@ export function About() {
                       Heavy-gauge galvanized steel laser-cut to micrometer tolerances to eliminate vibration harmonics and ensure long-term durability.
                     </p>
                   </div>
-                </div>
-              </div>
-
-              {/* Clean Metric Badges Strip - Balanced & Never Cramped */}
-              <div className="grid grid-cols-3 gap-2.5 pt-1">
-                <div className="p-2 sm:p-2.5 rounded-lg bg-[#0F172A] text-white text-center">
-                  <div className="text-xs sm:text-sm font-black text-[#38BDF8]">± 0.05 mm</div>
-                  <div className="text-[9.5px] text-gray-300 font-mono mt-0.5">Tolerance</div>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-[#0F172A] text-white text-center">
-                  <div className="text-xs sm:text-sm font-black text-[#0082C8]">40% Lower</div>
-                  <div className="text-[9.5px] text-gray-300 font-mono mt-0.5">Power Draw</div>
-                </div>
-                <div className="p-2 sm:p-2.5 rounded-lg bg-[#0F172A] text-white text-center">
-                  <div className="text-xs sm:text-sm font-black text-white">&lt; 3s</div>
-                  <div className="text-[9.5px] text-gray-300 font-mono mt-0.5">ARD Rescue</div>
                 </div>
               </div>
             </div>

@@ -10,7 +10,6 @@ import {
   CheckCircle2,
   AlertCircle,
   Loader2,
-  ShieldCheck,
   Headphones,
   RotateCcw,
   ExternalLink,
@@ -283,15 +282,6 @@ export function ContactForm() {
                 </div>
               </div>
             </div>
-
-            {/* Certifications Badge Card */}
-            <div className="p-3 rounded-lg bg-[#131E35]/60 border border-[#1E2E4E] flex items-center gap-2.5">
-              <ShieldCheck className="text-[#0082C8] w-5 h-5 shrink-0" />
-              <div className="text-[11px] text-gray-300">
-                <span className="font-bold text-white">Bureau of Indian Standards (BIS)</span> certified.
-                Full adherence to IS 14665 elevator safety code.
-              </div>
-            </div>
           </div>
 
           {/* Right Column (7 cols): Clean inquiry form with validation states */}
@@ -497,11 +487,6 @@ export function ContactForm() {
                       </>
                     )}
                   </button>
-
-                  <div className="flex items-center justify-center gap-1.5 text-[10px] text-gray-400 text-center">
-                    <ShieldCheck size={12} className="text-[#0082C8]" />
-                    <span>Your technical data is confidential. No spam guaranteed.</span>
-                  </div>
                 </form>
               )}
             </div>
