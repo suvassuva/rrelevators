@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Phone, ArrowUpRight, Menu, X, ShieldCheck } from 'lucide-react';
-import { InstagramIcon } from '@/components/ui/Icons';
+import { FacebookIcon, InstagramIcon } from '@/components/ui/Icons';
 import { NAV_LINKS, CONTACT, SOCIAL_LINKS } from '@/lib/constants';
 
 
@@ -133,8 +133,20 @@ export function Navbar() {
               })}
             </nav>
 
-            {/* Desktop Right Action Items: Instagram, Helpline Badge & CTA */}
+            {/* Desktop Right Action Items: Facebook, Instagram, Helpline Badge & CTA */}
             <div className="hidden lg:flex items-center gap-2 shrink-0">
+              {/* Facebook Profile Quick Link */}
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-8.5 w-8.5 rounded-lg bg-[#131E35]/80 border border-[#1E2E4E] hover:border-[#1877F2]/70 text-gray-300 hover:text-white flex items-center justify-center transition-all group"
+                title="Follow RR Elevators on Facebook"
+                aria-label="Facebook Profile"
+              >
+                <FacebookIcon size={15} className="group-hover:text-[#1877F2] transition-colors" />
+              </a>
+
               {/* Instagram Profile Quick Link */}
               <a
                 href={SOCIAL_LINKS.instagram}
@@ -188,6 +200,18 @@ export function Navbar() {
                 title={`Call ${CONTACT.phone}`}
               >
                 <Phone size={15} />
+              </a>
+
+              {/* Facebook link on tablet view */}
+              <a
+                href={SOCIAL_LINKS.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:flex w-9 h-9 rounded-lg bg-[#131E35] border border-[#1E2E4E] hover:border-[#1877F2] text-gray-300 hover:text-[#1877F2] items-center justify-center transition-colors shrink-0"
+                aria-label="Facebook Profile"
+                title="Follow RR Elevators on Facebook"
+              >
+                <FacebookIcon size={15} />
               </a>
 
               {/* Instagram link on tablet view */}

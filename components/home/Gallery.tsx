@@ -5,17 +5,17 @@ import Image from 'next/image';
 import {
   MapPin,
   X,
-  ChevronRight,
   Maximize2,
   Building2,
   ExternalLink,
+  Play,
 } from 'lucide-react';
 import { InstagramIcon } from '@/components/ui/Icons';
 import { GALLERY_PROJECTS, SOCIAL_LINKS } from '@/lib/constants';
 import { useInView } from '@/hooks/useInView';
 import type { GalleryCategory, GalleryProject } from '@/types';
 
-const CATEGORIES: GalleryCategory[] = ['All', 'Interiors', 'Residential', 'Commercial'];
+const CATEGORIES: GalleryCategory[] = ['All', 'Videos', 'Interiors', 'Residential', 'Commercial'];
 
 export function Gallery() {
   const { ref } = useInView({ threshold: 0.1 });
@@ -101,73 +101,51 @@ export function Gallery() {
               <div
                 key={project.id}
                 onClick={() => setSelectedProject(project)}
-                className="group relative bg-[#0F172A] rounded-xl overflow-hidden border border-gray-300/60 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1 flex flex-col justify-between"
-                style={{ animationDelay: `${idx * 70}ms` }}
+                className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-[#131E35] border border-gray-200/80 shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer hover:-translate-y-1.5"
+                style={{ animationDelay: `${idx * 50}ms` }}
               >
-                {/* Image Container with Fallback State & Zoom on Hover */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#131E35]">
-                  {!hasError ? (
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-95 group-hover:brightness-105"
-                      onError={() => handleImageError(project.id)}
+                {project.video ? (
+                  <div className="relative w-full h-full">
+                    <video
+                      src={project.video}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
                     />
-                  ) : (
-                    /* Fallback state when image cannot load */
-                    <div className="absolute inset-0 bg-[#131E35] flex flex-col items-center justify-center p-4 text-center text-white">
-                      <div className="w-10 h-10 rounded-lg bg-[#0082C8]/20 border border-[#0082C8]/40 flex items-center justify-center mb-2 text-[#38BDF8]">
-                        <Building2 size={18} />
+                    {/* Sleek Live Video Indicator Badge */}
+                    <div className="absolute top-3 left-3 z-10">
+                      <div className="px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white flex items-center gap-1.5 shadow-md">
+                        <Play size={10} fill="white" className="text-white" />
+                        <span className="text-[10px] font-bold font-mono tracking-wider uppercase">Video</span>
                       </div>
-                      <span className="text-[10px] uppercase font-mono text-gray-400">Architectural Shaft</span>
-                      <span className="text-xs font-bold text-white mt-0.5">{project.title}</span>
-                    </div>
-                  )}
-
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-[#0F172A]/30 to-transparent" />
-
-                  {/* Category Badge */}
-                  <div className="absolute top-2.5 left-2.5 z-10">
-                    <span className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-[#0F172A]/85 backdrop-blur-md text-[#38BDF8] border border-[#0082C8]/40 shadow-sm">
-                      {project.category}
-                    </span>
-                  </div>
-
-                  {/* Quick Expand Icon Button */}
-                  <div className="absolute top-2.5 right-2.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="w-7 h-7 rounded-md bg-[#0F172A]/80 backdrop-blur-md text-white flex items-center justify-center border border-white/20 shadow-sm">
-                      <Maximize2 size={12} />
                     </div>
                   </div>
-                </div>
-
-                {/* Card Content Footer */}
-                <div className="p-4 bg-[#0F172A] text-white flex-1 flex flex-col justify-between border-t border-[#1E2E4E]">
-                  <div>
-                    <h3 className="text-base font-bold font-[family-name:var(--font-heading)] text-white group-hover:text-[#38BDF8] transition-colors mb-1 leading-snug">
-                      {project.title}
-                    </h3>
-
-                    <div className="flex items-center gap-1.5 text-xs text-gray-400 mb-2.5">
-                      <MapPin size={12} className="text-[#0082C8] shrink-0" />
-                      <span>{project.location}</span>
+                ) : !hasError ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover group-hover:scale-108 transition-transform duration-700"
+                    onError={() => handleImageError(project.id)}
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-[#131E35] flex flex-col items-center justify-center p-4 text-center text-white">
+                    <div className="w-10 h-10 rounded-lg bg-[#0082C8]/20 border border-[#0082C8]/40 flex items-center justify-center mb-2 text-[#38BDF8]">
+                      <Building2 size={18} />
                     </div>
-
-                    <p className="text-[11px] text-gray-300 font-mono line-clamp-1 bg-[#131E35] px-2 py-0.5 rounded border border-[#1E2E4E] mb-2.5">
-                      {project.specs}
-                    </p>
+                    <span className="text-xs font-bold text-white">{project.title}</span>
                   </div>
+                )}
 
-                  <div className="flex items-center justify-between text-xs pt-2.5 border-t border-[#1E2E4E] text-gray-400">
-                    <span className="font-semibold text-gray-300 text-[11px]">Stops: {project.stops}</span>
-                    <span className="inline-flex items-center gap-0.5 text-[#0082C8] text-xs font-bold group-hover:translate-x-1 transition-transform">
-                      <span>Inspect</span>
-                      <ChevronRight size={13} />
-                    </span>
+                {/* Quick Expand Hover Icon */}
+                <div className="absolute top-3 right-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md text-white flex items-center justify-center border border-white/20 shadow-md">
+                    <Maximize2 size={14} />
                   </div>
                 </div>
               </div>
@@ -221,36 +199,54 @@ export function Gallery() {
             className="bg-[#0F172A] border border-[#0082C8]/50 rounded-xl max-w-xl w-full overflow-hidden shadow-2xl relative text-white"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Image Header */}
-            <div className="relative aspect-[16/9] w-full bg-[#131E35]">
-              <Image
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                fill
-                unoptimized
-                sizes="(max-width: 768px) 100vw, 700px"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-black/30" />
-
-              <button
-                type="button"
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-3 right-3 w-7 h-7 rounded-lg bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors"
-                aria-label="Close Project Modal"
-              >
-                <X size={15} />
-              </button>
-
-              <div className="absolute bottom-3 left-4 right-4">
-                <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-[#0082C8] text-white">
-                  {selectedProject.category}
-                </span>
-                <h3 className="text-lg sm:text-xl font-black font-[family-name:var(--font-heading)] text-white mt-0.5">
-                  {selectedProject.title}
-                </h3>
+            {/* Modal Header: Video or Image */}
+            {selectedProject.video ? (
+              <div className="relative aspect-[16/9] w-full bg-black">
+                <video
+                  src={selectedProject.video}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-contain"
+                />
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-3 right-3 z-20 w-8 h-8 rounded-lg bg-black/70 hover:bg-black text-white flex items-center justify-center transition-colors"
+                  aria-label="Close Project Modal"
+                >
+                  <X size={16} />
+                </button>
               </div>
-            </div>
+            ) : (
+              <div className="relative aspect-[16/9] w-full bg-[#131E35]">
+                <Image
+                  src={selectedProject.image}
+                  alt={selectedProject.title}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 700px"
+                  className="object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="absolute top-3 right-3 w-7 h-7 rounded-lg bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-colors"
+                  aria-label="Close Project Modal"
+                >
+                  <X size={15} />
+                </button>
+
+                <div className="absolute bottom-3 left-4 right-4">
+                  <span className="px-2 py-0.5 rounded text-[9px] font-mono font-bold uppercase tracking-wider bg-[#0082C8] text-white">
+                    {selectedProject.category}
+                  </span>
+                  <h3 className="text-lg sm:text-xl font-black font-[family-name:var(--font-heading)] text-white mt-0.5">
+                    {selectedProject.title}
+                  </h3>
+                </div>
+              </div>
+            )}
 
             {/* Modal Body */}
             <div className="p-4 sm:p-5 space-y-3.5">

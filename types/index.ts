@@ -8,18 +8,19 @@ export interface NavLink {
 }
 
 // ─── Brand & Specs ──────────────────────────────────────────
-export type GalleryCategory = 'All' | 'Residential' | 'Commercial' | 'Capsule' | 'Interiors';
+export type GalleryCategory = 'All' | 'Videos' | 'Residential' | 'Commercial' | 'Capsule' | 'Interiors';
 
 export interface GalleryProject {
   id: string;
   title: string;
-  category: 'Residential' | 'Commercial' | 'Capsule' | 'Interiors';
+  category: 'Residential' | 'Commercial' | 'Capsule' | 'Interiors' | 'Videos';
   location: string;
   specs: string;
   stops: string;
   speed: string;
   capacity: string;
   image: string;
+  video?: string;
   description: string;
 }
 

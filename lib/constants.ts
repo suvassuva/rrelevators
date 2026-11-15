@@ -56,7 +56,7 @@ export const CONTACT = {
 
 // ─── Social Links ───────────────────────────────────────────
 export const SOCIAL_LINKS = {
-  facebook: 'https://facebook.com/rrelevators',
+  facebook: 'https://www.facebook.com/profile.php?id=100091646653245',
   instagram: 'https://www.instagram.com/rr_elevators/',
   linkedin: 'https://linkedin.com/company/rrelevators',
   twitter: 'https://twitter.com/rrelevators',
@@ -90,7 +90,7 @@ export const ABOUT_FEATURES = [
       'Engineered with dual-circuit electromagnetic fail-safe braking, automatic speed governors, bi-directional door light curtain barriers, and integrated seismic detection.',
     highlight: 'Multi-layer Braking & Interlocks',
     icon: 'ShieldCheck',
-    image: '/images/unnamed (10).webp',
+    image: '/images/about-safety.webp',
   },
   {
     id: 'efficiency',
@@ -100,7 +100,7 @@ export const ABOUT_FEATURES = [
       'Permanent Magnet Synchronous Motors (PMSM) paired with regenerative Variable Frequency Drives return kinetic power back to the building grid while cutting standby draw to near-zero.',
     highlight: 'Regenerative Eco-Drive Tech',
     icon: 'Zap',
-    image: '/images/unnamed (2).webp',
+    image: '/images/about-efficiency.webp',
   },
   {
     id: 'cabins',
@@ -110,7 +110,7 @@ export const ABOUT_FEATURES = [
       'Laser-cut hairline stainless steel, panoramic acoustic glass, customizable indirect linear ambient lighting, touchless capacitive calls, and Italian marble floorings.',
     highlight: 'Architectural Glass & Custom SS',
     icon: 'Sparkles',
-    image: '/images/unnamed (5).webp',
+    image: '/images/about-cabins.webp',
   },
 ];
 
@@ -123,7 +123,7 @@ export const SERVICES_LIST: ElevatorService[] = [
     description:
       'Designed with gearless traction technology for high-speed, vibration-free rides. Features advanced microprocessor group control for minimum lobby wait times and optimum passenger throughput.',
     icon: 'Users',
-    image: '/images/unnamed (4).webp',
+    image: '/images/service-passenger.webp',
     specs: [
       { label: 'Capacity', value: '6 to 26 Persons (408 - 1,768 kg)' },
       { label: 'Rated Speed', value: '1.0 m/s up to 2.5 m/s' },
@@ -143,7 +143,7 @@ export const SERVICES_LIST: ElevatorService[] = [
     description:
       'Turn vertical transit into a captivating architectural experience. Engineered with curved laminated safety glass, exterior stainless skeletal chassis, and integrated LED accent mood lighting.',
     icon: 'Eye',
-    image: '/images/unnamed (6).webp',
+    image: '/images/service-panoramic.webp',
     specs: [
       { label: 'Glass Specs', value: '10+10 mm Toughened Laminated Glass' },
       { label: 'Speed Range', value: '1.0 m/s to 2.0 m/s' },
@@ -163,7 +163,7 @@ export const SERVICES_LIST: ElevatorService[] = [
     description:
       'Built to endure intense industrial conditions with reinforced structural steel chassis, non-skid chequered plate decking, and heavy impact side protection rails compatible with forklifts.',
     icon: 'PackageCheck',
-    image: '/images/unnamed (10).webp',
+    image: '/images/service-freight.webp',
     specs: [
       { label: 'Payload', value: '1,000 kg up to 5,000+ kg' },
       { label: 'Operating Speed', value: '0.25 m/s to 1.0 m/s' },
@@ -183,7 +183,7 @@ export const SERVICES_LIST: ElevatorService[] = [
     description:
       'Engineered specifically for healthcare environments, featuring deep cabin dimensions accommodating modern intensive care beds, life-support monitors, and emergency surgical teams.',
     icon: 'Stethoscope',
-    image: '/images/unnamed (3).webp',
+    image: '/images/service-hospital.webp',
     specs: [
       { label: 'Cabin Depth', value: '2,400 mm+ (Bed & Stretcher Ready)' },
       { label: 'Capacity', value: '13 to 26 Passengers (1,000 - 2,000 kg)' },
@@ -203,7 +203,7 @@ export const SERVICES_LIST: ElevatorService[] = [
     description:
       'Upgrade your building’s vertical transportation without the cost and downtime of full replacement. We replace outdated relay controllers with smart microprocessors and energy-saving PMSM drives.',
     icon: 'RefreshCw',
-    image: '/images/unnamed (9).webp',
+    image: '/images/service-modernization.webp',
     specs: [
       { label: 'Energy Reduction', value: 'Up to 40% Power Consumption Saved' },
       { label: 'Execution', value: 'Phased implementation to minimize downtime' },
@@ -223,7 +223,7 @@ export const SERVICES_LIST: ElevatorService[] = [
     description:
       'Comprehensive Annual Maintenance Contracts (AMC) backed by dedicated mobile emergency dispatch units, certified elevator engineers, and 100% genuine factory OEM replacement parts.',
     icon: 'Headphones',
-    image: '/images/unnamed (7).webp',
+    image: '/images/service-amc.webp',
     specs: [
       { label: 'Dispatch SLA', value: '< 30 Minutes Emergency Rapid Dispatch' },
       { label: 'Helpline', value: '24/7/365 Dedicated Toll-Free Center' },
@@ -240,6 +240,58 @@ export const SERVICES_LIST: ElevatorService[] = [
 
 // ─── Filterable Gallery Projects (Real RR Elevators Installations) ─────
 export const GALLERY_PROJECTS: GalleryProject[] = [
+  {
+    id: 'video-1',
+    title: 'On-Site Elevator Hoisting & Transit Test',
+    category: 'Videos',
+    location: 'Bengaluru Site Deployment',
+    specs: 'Live Site Hoisting | Whisper-Quiet Travel',
+    stops: 'Full Transit',
+    speed: '1.75 m/s',
+    capacity: '8 Pax (544 kg)',
+    image: '/images/service-passenger.webp',
+    video: '/videos/gallery-video-1.mp4',
+    description: 'Authentic on-site video capture showing live elevator transit, micro-leveling precision, and smooth telescopic door operation.',
+  },
+  {
+    id: 'video-2',
+    title: 'Luxury Cabin Interior Craftsmanship Walkthrough',
+    category: 'Videos',
+    location: 'Bengaluru Luxury Residence',
+    specs: 'Bespoke SS Finish | Ambient LED Cove',
+    stops: 'Bespoke Villa',
+    speed: '1.5 m/s',
+    capacity: '6 Pax (408 kg)',
+    image: '/images/about-cabins.webp',
+    video: '/videos/gallery-video-2.mp4',
+    description: 'Detailed on-site walk-through of custom architectural cabin craft, ceiling illumination canopy, and hairline stainless steel precision fit.',
+  },
+  {
+    id: 'video-3',
+    title: 'High-Rise Shaft Alignment & Hoistway Rigging',
+    category: 'Videos',
+    location: 'Bengaluru Commercial Complex',
+    specs: 'Structural Wellway | Precision Guide Rails',
+    stops: 'High-Rise Rigging',
+    speed: '2.0 m/s',
+    capacity: 'Heavy Duty',
+    image: '/images/about-safety.webp',
+    video: '/videos/gallery-video-3.mp4',
+    description: 'Authentic site footage of elevator shaft alignment, precision counterweight balancing, and heavy-duty hoistway rigging in progress.',
+  },
+  {
+    id: 'video-4',
+    title: 'Ride Quality, Acceleration & Leveling Verification',
+    category: 'Videos',
+    location: 'Bengaluru Corporate Tower',
+    specs: 'Micro-Leveling Calibration | Gearless PMSM',
+    stops: 'Corporate Plaza',
+    speed: '2.5 m/s',
+    capacity: '13 Pax (884 kg)',
+    image: '/images/service-modernization.webp',
+    video: '/videos/gallery-video-4.mp4',
+    description: 'Field testing of acceleration curves, vibration-free ride dynamics, and millimeter-accurate landing leveling on real customer installations.',
+  },
   {
     id: 'proj-1',
     title: 'Emerald Lotus Architectural Lift',

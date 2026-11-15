@@ -10,15 +10,13 @@ import {
   CheckCircle2,
   Settings2,
   Lock,
-  ExternalLink,
   Play,
   Pause,
   Volume2,
   VolumeX,
 } from 'lucide-react';
-import { InstagramIcon } from '@/components/ui/Icons';
 import { useInView } from '@/hooks/useInView';
-import { ABOUT_FEATURES, SOCIAL_LINKS } from '@/lib/constants';
+import { ABOUT_FEATURES } from '@/lib/constants';
 
 const featureIcons = {
   safety: ShieldCheck,
@@ -193,7 +191,6 @@ export function About() {
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/80 via-transparent to-black/20" />
 
                   <div className="absolute top-2.5 left-2.5 z-10">
                     <div className="w-8 h-8 rounded-lg bg-white/95 backdrop-blur-md text-[#0082C8] flex items-center justify-center shadow-md">
@@ -227,74 +224,6 @@ export function About() {
               </div>
             );
           })}
-        </div>
-
-        {/* Real Craftsmanship & Hoistway Installations Strip */}
-        <div className="mt-10 sm:mt-12 p-5 sm:p-6 rounded-2xl bg-white border border-gray-200/90 shadow-md space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-gray-100">
-            <div>
-              <div className="text-[10px] font-mono uppercase font-bold text-[#0082C8] tracking-wider">
-                Bengaluru Facility &amp; On-Site Deployments
-              </div>
-              <h3 className="text-base sm:text-lg font-black text-[#0F172A] font-[family-name:var(--font-heading)] mt-0.5">
-                Authentic Craftsmanship &amp; Custom Cabin Finishes
-              </h3>
-            </div>
-            <a
-              href={SOCIAL_LINKS.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#E1306C] hover:text-[#C13584] transition-colors"
-            >
-              <InstagramIcon size={14} />
-              <span>Explore @rr_elevators on Instagram</span>
-              <ExternalLink size={12} />
-            </a>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {[
-              {
-                title: 'Executive Walnut Suite',
-                desc: 'Acoustic wood & gold trim',
-                src: '/images/unnamed (9).webp',
-              },
-              {
-                title: 'Emerald Lotus Canopy',
-                desc: 'Laser-cut false ceiling',
-                src: '/images/unnamed (4).webp',
-              },
-              {
-                title: 'Sunburst Bronze Radial',
-                desc: 'Artisan etched bronze panels',
-                src: '/images/unnamed (6).webp',
-              },
-              {
-                title: 'Cyber Mandala Art',
-                desc: 'Sapphire LED backlit canopy',
-                src: '/images/unnamed (11).webp',
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="group relative aspect-[4/3] rounded-lg overflow-hidden bg-gray-900 border border-gray-200/80 shadow-xs"
-              >
-                <Image
-                  src={item.src}
-                  alt={item.title}
-                  fill
-                  unoptimized
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-2 left-2 right-2 text-white">
-                  <div className="text-[11px] font-bold leading-tight drop-shadow">{item.title}</div>
-                  <div className="text-[9.5px] text-gray-300 font-mono leading-tight">{item.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

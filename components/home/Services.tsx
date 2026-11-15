@@ -99,9 +99,8 @@ export function Services() {
                     fill
                     unoptimized
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700 brightness-90 group-hover:brightness-100"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#131E35] via-[#131E35]/40 to-transparent" />
 
                   {/* Icon badge floating on top left */}
                   <div className="absolute top-2.5 left-2.5 z-10">
@@ -109,72 +108,40 @@ export function Services() {
                       <Icon size={16} />
                     </div>
                   </div>
-
-                  {/* System tag floating on top right */}
-                  <div className="absolute top-2.5 right-2.5 z-10">
-                    <span className="text-[9.5px] font-mono font-bold bg-[#0F172A]/85 backdrop-blur-md px-2 py-0.5 rounded text-gray-300 border border-white/10">
-                      {`0${index + 1} / SYS`}
-                    </span>
-                  </div>
                 </div>
 
-                {/* Card Body */}
-                <div className="p-4 sm:p-4.5 flex-1 flex flex-col justify-between">
+                {/* Card Body - Compact */}
+                <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
                   {/* Title & Tagline */}
                   <div>
                     <h3 className="text-base sm:text-lg font-bold font-[family-name:var(--font-heading)] text-white mb-1.5 group-hover:text-[#38BDF8] transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-xs text-gray-300 leading-relaxed mb-3">
+                    <p className="text-xs text-gray-300 leading-relaxed line-clamp-2">
                       {service.tagline}
                     </p>
-
-                  {/* Core Specifications Box - Compact */}
-                  <div className="p-3 rounded-lg bg-[#0F172A] border border-[#1E2E4E] mb-3.5 space-y-1.5">
-                    <div className="text-[9px] uppercase font-mono tracking-wider text-[#0082C8] font-bold">
-                      Core Technical Specs
-                    </div>
-                    <div className="space-y-1">
-                      {service.specs.slice(0, 3).map((spec, sIdx) => (
-                        <div key={sIdx} className="flex items-center justify-between text-[11px]">
-                          <span className="text-gray-400">{spec.label}:</span>
-                          <span className="font-semibold text-gray-200 text-right">{spec.value}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
 
-                  {/* Key Highlights */}
-                  <ul className="space-y-1 mb-4">
-                    {service.keyFeatures.slice(0, 2).map((feat, fIdx) => (
-                      <li key={fIdx} className="flex items-start gap-1.5 text-[11px] text-gray-300">
-                        <CheckCircle2 size={13} className="text-[#0082C8] shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
                   {/* Card Actions - Refined small buttons */}
-                  <div className="pt-3 border-t border-[#1E2E4E] flex items-center justify-between gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedService(service)}
-                    className="text-[11px] font-semibold text-[#38BDF8] hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
-                  >
-                    <span>Full Specs</span>
-                    <ArrowRight size={12} />
-                  </button>
+                  <div className="pt-3 mt-4 border-t border-[#1E2E4E] flex items-center justify-between gap-2">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedService(service)}
+                      className="text-[11px] font-semibold text-[#38BDF8] hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+                    >
+                      <span>Full Specs</span>
+                      <ArrowRight size={12} />
+                    </button>
 
-                  <button
-                    type="button"
-                    onClick={() => handleInquire(service.title)}
-                    className="px-3 py-1 rounded-md bg-[#0082C8]/20 hover:bg-[#0082C8] text-[#38BDF8] hover:text-white text-[10.5px] font-bold uppercase tracking-wider border border-[#0082C8]/40 transition-all cursor-pointer"
-                  >
-                    Request Quote
-                  </button>
+                    <button
+                      type="button"
+                      onClick={() => handleInquire(service.title)}
+                      className="px-3 py-1 rounded-md bg-[#0082C8]/20 hover:bg-[#0082C8] text-[#38BDF8] hover:text-white text-[10.5px] font-bold uppercase tracking-wider border border-[#0082C8]/40 transition-all cursor-pointer"
+                    >
+                      Request Quote
+                    </button>
+                  </div>
                 </div>
-              </div>
             </div>
           );
           })}
